@@ -18,15 +18,15 @@ do
 
     if [ $instance != "frontend" ]
     then
-        IP=$(instance_id=$(aws ec2 describe-instances \
+        IP=$(aws ec2 describe-instances \
             --instance-ids $INSTANCE_ID \
             --query 'Reservations[0].Instances[0].PrivateIpAddress' \
-            --output text))
+            --output text)
     else
-        IP=$(instance_id=$(aws ec2 describe-instances \
+        IP=$(aws ec2 describe-instances \
             --instance-ids $INSTANCE_ID \
             --query 'Reservations[0].Instances[0].PublicIpAddress' \
-            --output text))
+            --output text)
     fi
     echo "The IP address of $instance is $IP"
 done 
