@@ -29,7 +29,7 @@ fi
 #Validate function tells us if the command is successful or not
 
 Validate(){
-    if [ $1 -ne 0 ]
+    if [ $1 -eq 0 ]
     then
         echo -e "$2 is a${G} success ${N}" | tee -a $LOG_FILE
     else
