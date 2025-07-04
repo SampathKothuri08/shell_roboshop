@@ -12,7 +12,7 @@ LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 mkdir -p $LOGS_FOLDER 
 
-echo "script started at $(date)" | | tee -a $LOG_FILE
+echo "script started at $(date)" | tee -a $LOG_FILE
 
 #check if the user has the root access or not
 
