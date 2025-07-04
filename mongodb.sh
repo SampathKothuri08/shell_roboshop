@@ -20,10 +20,10 @@ USER_ID=$(id -u)
 
 if [ $USER_ID -ne 0 ]
 then
-    echo "${R}ERROR:You need Root access to run this script ${N}" | tee -a $LOG_FILE
+    echo -e "${R}ERROR:You need Root access to run this script ${N}" | tee -a $LOG_FILE
     exit 90
 else
-    echo "${G}You are running the script with the root access ${N}" | tee -a $LOG_FILE
+    echo -e "${G}You are running the script with the root access ${N}" | tee -a $LOG_FILE
 fi
 
 #Validate function tells us if the command is successful or not
@@ -31,15 +31,15 @@ fi
 Validate(){
     if [ $1 -ne 0 ]
     then
-        echo "$2 is a${G} success ${N}" | tee -a $LOG_FILE
+        echo -e "$2 is a${G} success ${N}" | tee -a $LOG_FILE
     else
-        echo "$2 is a${R} Failure ${N}" | tee -a $LOG_FILE
+        echo -e "$2 is a${R} Failure ${N}" | tee -a $LOG_FILE
         exit 90
     fi
 }
 
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOG_FILE
+cp mongo.repo /etc/yum.repos.d/mongo.repo
 
 Validate $? "Copying the mongo repo"
 
