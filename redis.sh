@@ -39,15 +39,15 @@ Validate(){
     fi
 }
 
-dnf module disable redis -y | tee -a $LOG_FILE
+dnf module disable redis -y &>> $LOG_FILE
 
 Validate $? "Disabling the default version for redis"
 
-dnf module enable redis:7 -y | tee -a $LOG_FILE
+dnf module enable redis:7 -y &>> $LOG_FILE
 
 Validate $? "Enabliing the redis version 7"
 
-dnf install redis -y | tee -a $LOG_FILE
+dnf install redis -y &>> $LOG_FILE
 
 Validate $? "Installing redis"
 
@@ -56,19 +56,18 @@ sed -i -e 's/127.0.0.1/0.0.0.0/g' -e '/protected-mode/ c protected-mode no' /etc
 Validate $? "Changing the redis configuration file"
 
 
-systemctl enable redis | tee -a $LOG_FILE
+systemctl enable redis &>> $LOG_FILE
 
 Validate $? "Enabling redis"
 
-systemctl start redis | tee -a $LOG_FILE
-
+systemctl start redis &>> $LOG_FILE
 Validate $? "Starting redis"
 
 END_TIME=$(date +%s)
 
 TIME_TAKEN=$(($END_TIME-$START_TIME))
 
-echo "Script execution completed successfully, ${Y}time taken : ${G}$TIME_TAKEN seconds $N" | tee -a $LOG_FILE
+echo -e "Script execution completed successfully, ${Y}time taken : ${G}$TIME_TAKEN seconds $N" | tee -a $LOG_FILE
 
 
 
