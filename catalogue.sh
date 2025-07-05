@@ -82,7 +82,7 @@ Validate $? "Installing all the dependencies"
 
 cp /$SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
 
-systemctl daemon-relaod  &>> $LOG_FILE
+systemd daemon-relaod  &>> $LOG_FILE
 Validate $? "Reloaded the daemon"
 
 systemctl enable catalogue  &>> $LOG_FILE
