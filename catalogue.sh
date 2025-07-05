@@ -101,12 +101,12 @@ Validate $? "Installing mongosh, the mongodb client"
 
 STATUS=$(mongosh --host mongodb.devopseng.shop --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
 
-if [ STATUS -lt 0 ]
+if [ $STATUS -lt 0 ]
 then 
     mongosh --host mongodb.devopseng.shop </app/db/master-data.js  &>> $LOG_FILE
     Validate $? "Loading the data into mongodb server"
 else
-    echo "${Y}Data is already loaded, skip it!${N}" | tee -a $LOG_FILE
+    echo -e "${Y}Data is already loaded, skip it!${N}" | tee -a $LOG_FILE
 fi
 
 
