@@ -13,6 +13,7 @@ SCRIPT_DIR=$PWD
 
 mkdir -p $LOGS_FOLDER 
 
+START_TIME=$(date +%s)
 echo "script started at $(date)" | tee -a $LOG_FILE
 
 #check if the user has the root access or not
