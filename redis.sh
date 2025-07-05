@@ -11,7 +11,8 @@ LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 
 mkdir -p $LOGS_FOLDER 
-START_TIME=$(date+%s)
+#space is important as they are two different entities
+START_TIME=$(date +%s)
 echo "script started at $(date)" | tee -a $LOG_FILE
 
 #check if the user has the root access or not
@@ -63,7 +64,7 @@ systemctl start redis | tee -a $LOG_FILE
 
 Validate $? "Starting redis"
 
-END_TIME=$(date+%s)
+END_TIME=$(date +%s)
 
 TIME_TAKEN=$(($END_TIME-$START_TIME))
 
