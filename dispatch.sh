@@ -45,7 +45,7 @@ dnf install golang -y &>> $LOG_FILE
 
 Validate $? "Installing golong" 
 
-id dispatch &>> LOG_FILE
+id dispatch &>> $LOG_FILE
 
 
 if [ $? -ne 0 ]
@@ -78,7 +78,7 @@ Validate $? "Initiating a new go module named dispatch"
 
 go get &>> $LOG_FILE
 
-Validate $? "Installing all required dependencies"
+Validate $? "Installing all the required dependencies"
 
 go build &>> $LOG_FILE
 
