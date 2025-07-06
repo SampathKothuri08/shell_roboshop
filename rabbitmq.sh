@@ -39,6 +39,9 @@ Validate(){
     fi
 }
 
+cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo
+
+Validate $? "Adding the rabbitmq server"
 
 dnf install rabbitmq-server -y &>> $LOG_FILE
 
