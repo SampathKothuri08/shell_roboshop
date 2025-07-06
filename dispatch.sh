@@ -58,7 +58,7 @@ else
 fi
 
 
-mkdir /app &>> $LOG_FILE
+mkdir -p /app &>> $LOG_FILE
 
 Validate $? "Creating an app directory"
 
