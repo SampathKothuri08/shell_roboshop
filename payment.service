@@ -2,7 +2,7 @@
 Description=Payment Service
 
 [Service]
-User=root
+User=payment
 WorkingDirectory=/app
 // highlight-start
 Environment=CART_HOST=cart.devopseng.shop
